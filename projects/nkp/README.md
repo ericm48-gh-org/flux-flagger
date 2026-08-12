@@ -9,7 +9,7 @@
 ```
 helm upgrade -i flagger flagger/flagger \
 --namespace kommander \
---set metricsServer=http://prometheus.monitoring:9090
+--set metricsServer=http://kube-prometheus-stack-prometheus:9090
 ```
 
 ```
