@@ -8,7 +8,8 @@ spec:
   entryPoints:
     - web
   routes:
-    - match: Host(`10.38.240.17`)
+    - match: Host(`10.38.240.17`)  
+#    - match: Host(`app.example.com`)
       kind: Rule
       services:
         - name: podinfo
