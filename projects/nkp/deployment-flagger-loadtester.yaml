@@ -2,17 +2,9 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   annotations:
-    deployment.kubernetes.io/revision: "1"
-    kubectl.kubernetes.io/last-applied-configuration: |
-      {"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{},"labels":{"app":"flagger-loadtester"},"name":"flagger-loadtester","namespace":"test"},"spec":{"selector":{"matchLabels":{"app":"flagger-loadtester"}},"template":{"metadata":{"annotations":{"openservicemesh.io/inbound-port-exclusion-list":"80, 8080","prometheus.io/port":"8080","prometheus.io/scrape":"true"},"labels":{"app":"flagger-loadtester"}},"spec":{"containers":[{"command":["./loadtester","-port=8080","-log-level=info","-timeout=1h"],"image":"ghcr.io/fluxcd/flagger-loadtester:0.39.0","imagePullPolicy":"IfNotPresent","livenessProbe":{"exec":{"command":["wget","--quiet","--tries=1","--timeout=4","--spider","http://localhost:8080/healthz"]},"timeoutSeconds":5},"name":"loadtester","ports":[{"containerPort":8080,"name":"http"}],"readinessProbe":{"exec":{"command":["wget","--quiet","--tries=1","--timeout=4","--spider","http://localhost:8080/healthz"]},"timeoutSeconds":5},"resources":{"limits":{"cpu":"1000m","memory":"512Mi"},"requests":{"cpu":"10m","memory":"32Mi"}},"securityContext":{"readOnlyRootFilesystem":true,"runAsUser":10001}}]}}}}
-  creationTimestamp: "2026-09-14T23:05:10Z"
-  generation: 1
   labels:
     app: flagger-loadtester
   name: flagger-loadtester
-  namespace: test
-  resourceVersion: "6653860"
-  uid: d0786f72-81a9-43e9-b16e-2a051bc1ab7c
 spec:
   progressDeadlineSeconds: 600
   replicas: 1
@@ -90,23 +82,3 @@ spec:
       schedulerName: default-scheduler
       securityContext: {}
       terminationGracePeriodSeconds: 30
-status:
-  availableReplicas: 1
-  conditions:
-  - lastTransitionTime: "2026-09-14T23:05:19Z"
-    lastUpdateTime: "2026-09-14T23:05:19Z"
-    message: Deployment has minimum availability.
-    reason: MinimumReplicasAvailable
-    status: "True"
-    type: Available
-  - lastTransitionTime: "2026-09-14T23:05:10Z"
-    lastUpdateTime: "2026-09-14T23:05:19Z"
-    message: ReplicaSet "flagger-loadtester-595994f774" has successfully progressed.
-    reason: NewReplicaSetAvailable
-    status: "True"
-    type: Progressing
-  observedGeneration: 1
-  readyReplicas: 1
-  replicas: 1
-  terminatingReplicas: 0
-  updatedReplicas: 1
