@@ -27,7 +27,12 @@ spec:
         app: flagger-loadtester
     spec:
       containers:
-      - command:
+      - name: loadtester
+        ports:
+        - containerPort: 8080
+          name: http
+          protocol: TCP
+        command:
         - ./loadtester
         - -port=8080
         - -log-level=info
@@ -47,11 +52,6 @@ spec:
           periodSeconds: 10
           successThreshold: 1
           timeoutSeconds: 5
-        name: loadtester
-        ports:
-        - containerPort: 8080
-          name: http
-          protocol: TCP
         readinessProbe:
           exec:
             command:
