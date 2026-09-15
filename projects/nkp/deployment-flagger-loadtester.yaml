@@ -1,3 +1,9 @@
+---
+# Adding a garden variety LoadBalancer doesn't seem to work.
+# Must use:
+# k expose deploy flagger-loadtester  --port 8080 --target-port 8080 --type LoadBalancer
+#
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
