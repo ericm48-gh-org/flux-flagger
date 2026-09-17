@@ -16,8 +16,6 @@ metadata:
     helm.toolkit.fluxcd.io/namespace: kommander
   name: allow-webhooks
   namespace: kommander-flux
-  resourceVersion: "17109"
-  uid: 65ae7cee-7c69-4b63-b579-15af69203ab6
 spec:
   ingress:
   - from:
