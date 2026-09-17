@@ -1,0 +1,40 @@
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"autoscaling/v2","kind":"HorizontalPodAutoscaler","metadata":{"annotations":{},"name":"podinfo","namespace":"test"},"spec":{"maxReplicas":4,"metrics":[{"resource":{"name":"cpu","target":{"averageUtilization":99,"type":"Utilization"}},"type":"Resource"}],"minReplicas":2,"scaleTargetRef":{"apiVersion":"apps/v1","kind":"Deployment","name":"podinfo"}}}
+  creationTimestamp: "2026-09-17T17:00:18Z"
+  name: podinfo
+  namespace: test
+  resourceVersion: "21808435"
+  uid: 8b48a3db-bf62-422b-9cd4-e7e279f4c1b2
+spec:
+  maxReplicas: 4
+  metrics:
+  - resource:
+      name: cpu
+      target:
+        averageUtilization: 99
+        type: Utilization
+    type: Resource
+  minReplicas: 2
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: podinfo
+status:
+  conditions:
+  - lastTransitionTime: "2026-09-17T17:49:06Z"
+    message: the HPA controller was able to get the target's current scale
+    reason: SucceededGetScale
+    status: "True"
+    type: AbleToScale
+  - lastTransitionTime: "2026-09-17T17:00:48Z"
+    message: scaling is disabled since the replica count of the target is zero
+    reason: ScalingDisabled
+    status: "False"
+    type: ScalingActive
+  currentMetrics: null
+  desiredReplicas: 0
+  lastScaleTime: "2026-09-17T17:49:07Z"
