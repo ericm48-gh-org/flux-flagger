@@ -38,4 +38,4 @@ spec:
         timeout: 5s
         metadata:
           type: bash
-          cmd: "curl -sd 'anon' http://podinfo-preview:9898/token | grep token"
+          cmd: "curl -sd 'anon' http://podinfo-primary:9898/token | grep token"
