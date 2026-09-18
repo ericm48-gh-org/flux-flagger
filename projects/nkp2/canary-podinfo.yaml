@@ -1,0 +1,40 @@
+---
+apiVersion: flagger.app/v1beta1
+kind: Canary
+metadata:
+  name: podinfo
+spec:
+  # Target the deployment tracked by Flux CD
+  targetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: podinfo
+  # Target the companion HPA
+  autoscalerRef:
+    apiVersion: autoscaling/v2
+    kind: HorizontalPodAutoscaler
+    name: podinfo
+  service:
+    port: 9898
+    targetPort: http
+  analysis:
+    # Interval between metric checks
+    interval: 1m
+    # Number of checks to perform before complete promotion
+    threshold: 5
+    # Total iterations for testing the Green environment
+    iterations: 5
+    # The crucial block enforcing Blue/Green behavior over standard Canary
+    strategy:
+      blueGreen:
+        # Switch traffic completely (100%) to Green once tests pass
+        autoPromotionEnabled: true
+    # Webhooks execute automated tests against the Green/Preview service
+    webhooks:
+      - name: conformance-test
+        type: pre-rollout
+        url: http://flagger-loadtester.test
+        timeout: 5s
+        metadata:
+          type: bash
+          cmd: "curl -sd 'test' http://podinfo-preview:9898/token | grep token"

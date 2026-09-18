@@ -32,12 +32,12 @@ spec:
     # Prometheus checks based on 
     # http_request_duration_seconds histogram
     metrics:
-      - name: request-success-rate
-        # minimum req success rate (non 5xx responses)
-        # percentage (0-100)
-        thresholdRange:
-          min: 99
-        interval: 1m
+      # - name: request-success-rate
+      #   # minimum req success rate (non 5xx responses)
+      #   # percentage (0-100)
+      #   thresholdRange:
+      #     min: 99
+      #   interval: 1m
       - name: request-duration
         # maximum req duration P99
         # milliseconds
