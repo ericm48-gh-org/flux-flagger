@@ -25,10 +25,10 @@ spec:
     # Total iterations for testing the Green environment
     iterations: 5
     # The crucial block enforcing Blue/Green behavior over standard Canary
-    strategy:
-      blueGreen:
-        # Switch traffic completely (100%) to Green once tests pass
-        autoPromotionEnabled: true
+    # strategy:
+    #   blueGreen:
+    #     # Switch traffic completely (100%) to Green once tests pass
+    #     autoPromotionEnabled: true
     # Webhooks execute automated tests against the Green/Preview service
     webhooks:
       - name: conformance-test
