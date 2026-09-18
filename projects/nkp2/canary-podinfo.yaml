@@ -4,6 +4,7 @@ kind: Canary
 metadata:
   name: podinfo
 spec:
+  provider: kubernetes
   # Target the deployment tracked by Flux CD
   targetRef:
     apiVersion: apps/v1
