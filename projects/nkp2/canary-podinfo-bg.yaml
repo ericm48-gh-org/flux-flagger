@@ -26,10 +26,13 @@ spec:
     # Total iterations for testing the Green environment
     iterations: 5
     # The crucial block enforcing Blue/Green behavior over standard Canary
+
+    # The below is syntactically broke with current CRD:
     # strategy:
     #   blueGreen:
     #     # Switch traffic completely (100%) to Green once tests pass
     #     autoPromotionEnabled: true
+
     # Webhooks execute automated tests against the Green/Preview service
     webhooks:
       - name: conformance-test
