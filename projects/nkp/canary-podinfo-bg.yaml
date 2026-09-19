@@ -32,7 +32,7 @@ spec:
     # Prometheus checks based on 
     # http_request_duration_seconds histogram
     metrics:
-    # This seems bork'd on NKP...why?
+    # This IS bork'd on NKP...why?
       - name: request-success-rate
         # minimum req success rate (non 5xx responses)
         # percentage (0-100)
