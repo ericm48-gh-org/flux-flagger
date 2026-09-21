@@ -62073,7 +62073,7 @@ spec:
         - name: OPERATOR_NAME
           value: splunk-operator
         - name: SPLUNK_GENERAL_TERMS
-          value: ""
+          value: "--accept-sgt-current-at-splunk-com"
         - name: POD_NAME
           valueFrom:
             fieldRef:
