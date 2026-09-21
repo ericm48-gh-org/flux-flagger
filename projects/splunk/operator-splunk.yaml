@@ -5,3 +5,6 @@ metadata:
   name: s1
   finalizers:
   - enterprise.splunk.com/delete-pvc
+  env:
+  - name: SPLUNK_GENERAL_TERMS
+    value: "--accept-sgt-current-at-splunk-com"
