@@ -3,7 +3,6 @@ apiVersion: opentelemetry.io/v1beta1
 kind: OpenTelemetryCollector
 metadata:
   name: splunk-logs
-  namespace: observability
 spec:
   mode: daemonset
   # splunk_hec is a contrib exporter and is NOT in the operator's default
