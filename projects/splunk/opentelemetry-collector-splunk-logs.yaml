@@ -39,7 +39,7 @@ spec:
     - operator: Exists
 
   config:
-    receivers:
+receivers:
       filelog:
         include:
           - /var/log/pods/*/*/*.log
@@ -52,7 +52,8 @@ spec:
           - type: container
             id: container-parser
             add_metadata_from_filepath: true
-            format: auto
+            # containerd on NKP; or omit this line entirely for auto-detection
+            format: containerd
 
     processors:
       memory_limiter:
