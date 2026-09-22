@@ -102,7 +102,7 @@ spec:
         source: "kubernetes"
         sourcetype: "kube:container"
         index: "k8s_logs"
-        max_connections: 20
+        #max_connections: 20
         tls:
           insecure_skip_verify: false
           # ca_file: /etc/otel/certs/splunk-ca.pem
