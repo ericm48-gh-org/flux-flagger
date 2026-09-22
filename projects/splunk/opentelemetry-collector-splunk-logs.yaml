@@ -9,7 +9,6 @@ spec:
   # collector image — pin the contrib distro (align the tag with your operator).
   image: otel/opentelemetry-collector-contrib:0.117.0
   serviceAccount: otel-logs-collector
-
   env:
     - name: K8S_NODE_NAME
       valueFrom:
