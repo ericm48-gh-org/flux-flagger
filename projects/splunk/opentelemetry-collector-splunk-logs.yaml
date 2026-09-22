@@ -39,7 +39,7 @@ spec:
     - operator: Exists
 
   config:
-receivers:
+    receivers:
       filelog:
         include:
           - /var/log/pods/*/*/*.log
