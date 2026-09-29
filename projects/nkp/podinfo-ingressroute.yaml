@@ -3,12 +3,12 @@ apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
   name: podinfo
-  namespace: test
 spec:
   entryPoints:
     - web
   routes:
-    - match: Host(`10.38.240.17`)  
+    # HPOC PHX-POC235
+    - match: Host(`10.38.235.17`)  
 #    - match: Host(`app.example.com`)
       kind: Rule
       services:
