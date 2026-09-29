@@ -4,7 +4,6 @@ metadata:
   annotations:
     meta.helm.sh/release-name: kommander-flux
     meta.helm.sh/release-namespace: kommander-flux
-  creationTimestamp: "2026-09-13T17:28:19Z"
   generation: 1
   labels:
     app.kubernetes.io/instance: kommander-flux
