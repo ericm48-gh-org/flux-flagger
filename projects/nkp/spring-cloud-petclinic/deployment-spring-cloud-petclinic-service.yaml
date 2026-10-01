@@ -45,12 +45,12 @@ spec:
           name: http
           protocol: TCP
         env:
-        - name: SERVER_PORT
-          value: 8081        
         - name: KUBE_NODE_NAME
           valueFrom:
             fieldRef:
               fieldPath: spec.nodeName
+        - name: SERVER_PORT
+          value: '8081'
         - name: LOGGING_LEVEL_ORG_SPRINGFRAMEWORK_CLOUD
           value: DEBUG
         - name: LOGGING_LEVEL_ORG_SPRINGFRAMEWORK_BEANS
