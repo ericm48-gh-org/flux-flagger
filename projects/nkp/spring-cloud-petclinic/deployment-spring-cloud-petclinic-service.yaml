@@ -7,10 +7,19 @@ metadata:
   labels:
     app: spring-cloud-petclinic-service
 spec:
-  replicas: 1
+  minReadySeconds: 5
+  progressDeadlineSeconds: 60
+  replicas: 2
+  revisionHistoryLimit: 5
   selector:
     matchLabels:
-      name: spring-cloud-petclinic-service
+      app: spring-cloud-petclinic-service
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 1
+    type: RollingUpdate
+
   template:
     metadata:
       labels:
@@ -18,8 +27,8 @@ spec:
         app: spring-cloud-petclinic-service   
     spec:
       securityContext:
-        fsGroup: 1000 
-
+        fsGroup: 1000
+        
       containers:
       - name: spring-cloud-petclinic-service
         image: ghcr.io/ericm48-gh-org/spring-cloud-petclinic-service:3.0.8-RELEASE
