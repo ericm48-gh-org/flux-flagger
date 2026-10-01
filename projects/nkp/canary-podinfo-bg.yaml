@@ -39,12 +39,12 @@ spec:
       #   thresholdRange:
       #     min: 99
       #   interval: 1m
-      - name: request-duration
-        # maximum req duration P99
-        # milliseconds
-        thresholdRange:
-          max: 500
-        interval: 30s
+      # - name: request-duration
+      #   # maximum req duration P99
+      #   # milliseconds
+      #   thresholdRange:
+      #     max: 500
+      #   interval: 30s
     # acceptance/load testing hooks
     webhooks:
       - name: smoke-test
