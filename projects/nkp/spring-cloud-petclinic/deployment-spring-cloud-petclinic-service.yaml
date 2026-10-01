@@ -1,0 +1,124 @@
+---
+# Environment: HPOC 4 Loki
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spring-cloud-petclinic-service-deployment
+  labels:
+    app: spring-cloud-petclinic-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: spring-cloud-petclinic-service
+  template:
+    metadata:
+      labels:
+        name: spring-cloud-petclinic-service
+        app: spring-cloud-petclinic-service   
+    spec:
+      securityContext:
+        fsGroup: 1000 
+
+      containers:
+      - name: spring-cloud-petclinic-service
+        image: ghcr.io/ericm48-gh-org/spring-cloud-petclinic-service:3.0.8-RELEASE
+        labels:
+          app: spring-cloud-petclinic-service
+        imagePullPolicy: Always
+        resources:
+          limits:
+            cpu: 300m
+            memory: 1000Mi
+          requests:
+            cpu: 100m
+            memory: 300Mi
+        ports:           
+        - containerPort: 8080
+          name: http
+          protocol: TCP
+        env:
+        - name: KUBE_NODE_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: spec.nodeName        
+        - name: LOGGING_LEVEL_ORG_SPRINGFRAMEWORK_CLOUD
+          value: DEBUG
+        - name: LOGGING_LEVEL_ORG_SPRINGFRAMEWORK_BEANS
+          value: INFO
+        - name: LOGGING_LEVEL_COM_ERIC                
+          value: DEBUG
+        - name: SPRING_CONFIG_IMPORT
+          value: "optional:file:/workspace/configs/timeout-settings.properties,optional:file:/workspace/configs/game-settings.properties,optional:file:/workspace/configs/ui-settings.properties,optional:file:/workspace/secrets/userid2-settings.properties,optional:file:/workspace/secrets/password2-settings.properties"
+        - name: SCK_FILE_USERID
+          value: '/dsg-platform/secrets/TEST_ERIC_TEST_USERID1'
+        - name: SCK_FILE_PASSWORD
+          value: '/dsg-platform/secrets/TEST_ERIC_TEST_PASSWORD1'
+        - name: SCK_EVAR_USERID
+          value: 'MY_SECRET_EVAR_USERID22'
+        - name: SCK_EVAR_PASSWORD
+          value: 'MY_SECRET_EVAR_PASSWORD22'
+        - name: MY_SECRET_USERID1
+          value: 'TheSuperSecretUserID33'
+        - name: MY_SECRET_PASSWORD1
+          value: 'TheSuperSecretPassWord33'
+
+        securityContext:
+          #runAsNonRoot: true
+          runAsUser: 1000
+          capabilities:
+            drop:
+              - all
+          #readOnlyRootFilesystem: true
+
+        # livenessProbe:
+        #   httpGet:
+        #     path: /actuator/health/liveness
+        #     port: 8080
+        #   initialDelaySeconds: 300
+        #   periodSeconds: 3
+        # readinessProbe:
+        #   httpGet:
+        #     path: /actuator/health/readiness
+        #     port: 8080
+        #   initialDelaySeconds: 30
+        #   periodSeconds: 3
+
+          volumeMounts:
+          - name: empty-log-volume
+            mountPath: "./logs"
+          - name: empty-config-volume
+            mountPath: "/workspace/configs"
+          - name: empty-secret-volume
+            mountPath: "/workspace/secrets"
+          - name: empty-secret-volume2
+            mountPath: "/workspace/secrets2"
+
+      volumes:
+      - name: empty-log-volume
+        emptyDir: {}      
+      - name: empty-config-volume
+        emptyDir: {}      
+      - name: empty-secret-volume
+        emptyDir: {}      
+      - name: empty-secret-volume2
+        emptyDir: {}
+
+      nodeSelector:
+        kubernetes.io/os: linux
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: spring-cloud-petclinic-service
+  annotations:
+        prometheus.io/scrape: 'true'
+  labels:
+    name: spring-cloud-petclinic-service
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+    targetPort: 8080
+  selector:
+    name: spring-cloud-petclinic-service
