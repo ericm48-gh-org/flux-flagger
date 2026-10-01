@@ -113,22 +113,22 @@ spec:
 
       nodeSelector:
         kubernetes.io/os: linux
----
-apiVersion: v1
-kind: Service
-metadata:
-  labels:
-    app: spring-cloud-petclinic-service
-  name: spring-cloud-petclinic-service
-spec:
-  ports:
-    - name: http
-      port: 8080
-      targetPort: 8080
-      protocol: TCP
-  selector:
-    app: spring-cloud-petclinic-service
-  type: ClusterIP        
+# ---
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   labels:
+#     app: spring-cloud-petclinic-service
+#   name: spring-cloud-petclinic-service
+# spec:
+#   ports:
+#     - name: http
+#       port: 8080
+#       targetPort: 8080
+#       protocol: TCP
+#   selector:
+#     app: spring-cloud-petclinic-service
+#   type: ClusterIP        
 # ---
 # apiVersion: v1
 # kind: Service
