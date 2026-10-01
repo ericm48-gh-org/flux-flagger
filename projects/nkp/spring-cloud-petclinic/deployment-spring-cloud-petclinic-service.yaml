@@ -3,7 +3,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: spring-cloud-petclinic-service-deployment
+  name: spring-cloud-petclinic-service
   labels:
     app: spring-cloud-petclinic-service
 spec:
