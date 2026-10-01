@@ -23,8 +23,6 @@ spec:
       containers:
       - name: spring-cloud-petclinic-service
         image: ghcr.io/ericm48-gh-org/spring-cloud-petclinic-service:3.0.8-RELEASE
-        labels:
-          app: spring-cloud-petclinic-service
         imagePullPolicy: Always
         resources:
           limits:
