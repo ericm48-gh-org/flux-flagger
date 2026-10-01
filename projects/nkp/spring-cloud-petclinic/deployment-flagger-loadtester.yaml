@@ -21,8 +21,9 @@ spec:
   template:
     metadata:
       annotations:
-        openservicemesh.io/inbound-port-exclusion-list: 80, 8080
-        prometheus.io/port: "8080"
+        #openservicemesh.io/inbound-port-exclusion-list: 80, 8080
+        openservicemesh.io/inbound-port-exclusion-list: 81, 8081        
+        prometheus.io/port: "8081"
         prometheus.io/scrape: "true"
       labels:
         app: flagger-loadtester
@@ -30,12 +31,12 @@ spec:
       containers:
       - name: loadtester
         ports:
-        - containerPort: 8080
+        - containerPort: 8081
           name: http
           protocol: TCP
         command:
         - ./loadtester
-        - -port=8080
+        - -port=8081
         - -log-level=info
         - -timeout=1h
         image: ghcr.io/fluxcd/flagger-loadtester:0.39.0
