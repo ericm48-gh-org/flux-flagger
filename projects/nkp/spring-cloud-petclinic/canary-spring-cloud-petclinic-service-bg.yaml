@@ -20,7 +20,7 @@ spec:
     kind: HorizontalPodAutoscaler
     name: spring-cloud-petclinic-service
   service:
-    port: 8081
+    port: 8080
     portDiscovery: true
   analysis:
     # schedule interval (default 60s)
@@ -53,10 +53,10 @@ spec:
         timeout: 15s
         metadata:
           type: bash
-          cmd: "curl -sd 'anon' http://spring-cloud-petclinic-service-canary.test:8081/actuator/health | grep UP"
+          cmd: "curl -sd 'anon' http://spring-cloud-petclinic-service-canary.test:8080/actuator/health | grep UP"
       - name: load-test
         url: http://flagger-loadtester.test/
         timeout: 5s
         metadata:
           type: cmd
-          cmd: "hey -z 1m -q 10 -c 2 http://spring-cloud-petclinic-service-canary.test:8081/"
+          cmd: "hey -z 1m -q 10 -c 2 http://spring-cloud-petclinic-service-canary.test:8080/"

@@ -41,7 +41,7 @@ spec:
             cpu: 100m
             memory: 300Mi
         ports:           
-        - containerPort: 8080
+        - containerPort: 8081
           name: http
           protocol: TCP
         env:
@@ -49,6 +49,8 @@ spec:
           valueFrom:
             fieldRef:
               fieldPath: spec.nodeName
+        - name: SERVER_PORT
+          value: '8081'
         - name: LOGGING_LEVEL_ORG_SPRINGFRAMEWORK_CLOUD
           value: DEBUG
         - name: LOGGING_LEVEL_ORG_SPRINGFRAMEWORK_BEANS
@@ -121,7 +123,6 @@ spec:
 #     app: spring-cloud-petclinic-service
 #   name: spring-cloud-petclinic-service
 # spec:
-#   type: ClusterIP        
 #   ports:
 #     - name: http
 #       port: 8080
@@ -129,7 +130,7 @@ spec:
 #       protocol: TCP
 #   selector:
 #     app: spring-cloud-petclinic-service
-
+#   type: ClusterIP        
 # ---
 # apiVersion: v1
 # kind: Service
