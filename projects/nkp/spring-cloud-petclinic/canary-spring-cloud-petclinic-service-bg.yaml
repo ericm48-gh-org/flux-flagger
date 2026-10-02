@@ -49,15 +49,13 @@ spec:
     webhooks:
       - name: smoke-test
         type: pre-rollout
-        #url: http://flagger-loadtester.test/
-        url: http://flagger-loadtester.test:81/
+        url: http://flagger-loadtester.test/
         timeout: 15s
         metadata:
           type: bash
           cmd: "curl -sd 'anon' http://spring-cloud-petclinic-service-canary.test:8080/actuator/health | grep UP"
       - name: load-test
-        #url: http://flagger-loadtester.test/
-        url: http://flagger-loadtester.test:81/
+        url: http://flagger-loadtester.test/
         metadata:
           type: cmd
           cmd: "hey -z 1m -q 10 -c 2 http://spring-cloud-petclinic-service-canary.test:8080/"
