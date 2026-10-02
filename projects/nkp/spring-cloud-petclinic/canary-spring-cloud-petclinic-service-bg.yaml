@@ -50,7 +50,7 @@ spec:
       - name: smoke-test
         type: pre-rollout
         url: http://flagger-loadtester.test/
-        timeout: 2m
+        timeout: 5m # 2m 1m 30s 15s
         metadata:
           type: bash
           cmd: "curl -s http://spring-cloud-petclinic-service-canary.test:8080/actuator/health | grep UP"          
