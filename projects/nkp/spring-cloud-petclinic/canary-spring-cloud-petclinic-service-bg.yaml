@@ -53,7 +53,8 @@ spec:
         timeout: 15s
         metadata:
           type: bash
-          cmd: "curl -sd 'anon' http://spring-cloud-petclinic-service-canary.test:8080/actuator/health | grep UP"
+          #cmd: "curl -sd 'anon' http://spring-cloud-petclinic-service-canary.test:8080/actuator/health | grep UP"
+          cmd: "curl -s http://spring-cloud-petclinic-service-canary.test:8080/actuator/health | grep UP"          
       - name: load-test
         url: http://flagger-loadtester.test/
         metadata:
