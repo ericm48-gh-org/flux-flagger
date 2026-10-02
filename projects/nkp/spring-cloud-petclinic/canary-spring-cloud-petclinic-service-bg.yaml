@@ -26,7 +26,7 @@ spec:
     # schedule interval (default 60s)
     interval: 30s
     # max number of failed checks before rollback
-    threshold: 2
+    threshold: 6
     # number of checks to run before rollback
     iterations: 10
     # Prometheus checks based on 
