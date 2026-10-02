@@ -28,7 +28,7 @@ spec:
     # max number of failed checks before rollback
     threshold: 12
     # number of checks to run before rollback
-    iterations: 10
+    iterations: 20
     # Prometheus checks based on 
     # http_request_duration_seconds histogram
     metrics:
