@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"v1","kind":"Service","metadata":{"annotations":{},"labels":{"app":"flagger-loadtester"},"name":"flagger-loadtester","namespace":"test"},"spec":{"ports":[{"name":"http","port":80,"protocol":"TCP","targetPort":"http"}],"selector":{"app":"flagger-loadtester"},"type":"ClusterIP"}}
+  creationTimestamp: "2026-10-06T03:04:07Z"
+  labels:
+    app: flagger-loadtester
+  name: flagger-loadtester
+  namespace: test
+  resourceVersion: "6937126"
+  uid: de75a563-379d-42f1-873e-e4735001b32d
+spec:
+  clusterIP: 10.111.93.179
+  clusterIPs:
+  - 10.111.93.179
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: http
+  selector:
+    app: flagger-loadtester
+  sessionAffinity: None
+  type: ClusterIP
+status:
+  loadBalancer: {}
