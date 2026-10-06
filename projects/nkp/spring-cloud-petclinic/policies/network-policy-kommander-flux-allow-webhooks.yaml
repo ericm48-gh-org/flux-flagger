@@ -1,0 +1,26 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  annotations:
+    meta.helm.sh/release-name: kommander-flux
+    meta.helm.sh/release-namespace: kommander-flux
+  generation: 1
+  labels:
+    app.kubernetes.io/instance: kommander-flux
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/part-of: flux
+    app.kubernetes.io/version: 2.8.5
+    helm.sh/chart: flux2-2.18.3
+    helm.toolkit.fluxcd.io/name: kommander-flux
+    helm.toolkit.fluxcd.io/namespace: kommander
+  name: allow-webhooks
+  namespace: kommander-flux
+spec:
+  ingress:
+  - from:
+    - namespaceSelector: {}
+  podSelector:
+    matchLabels:
+      app: notification-controller
+  policyTypes:
+  - Ingress
