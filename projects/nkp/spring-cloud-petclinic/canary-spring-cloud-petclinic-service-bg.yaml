@@ -47,10 +47,10 @@ spec:
       #   interval: 30s
     # acceptance/load testing hooks
     webhooks:
-      - name: start-gate
-        type: confirm-rollout
-        url: http://flagger-loadtester.test/gate/approve
-        retries: 15    
+      # - name: start-gate
+      #   type: confirm-rollout
+      #   url: http://flagger-loadtester.test/gate/approve
+      #   retries: 15    
       - name: smoke-test
         type: pre-rollout
         url: http://flagger-loadtester.test/
