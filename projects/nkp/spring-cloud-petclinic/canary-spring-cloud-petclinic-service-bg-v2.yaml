@@ -59,7 +59,7 @@ spec:
         type: pre-rollout
         url: http://flagger-loadtester.test/
         timeout: 3m
-        retries: 3        
+        retries: 10        
         metadata:
           type: bash
           cmd: "curl -s http://spring-cloud-petclinic-service-canary.test:8080/actuator/health | grep UP"
@@ -79,7 +79,7 @@ spec:
         type: post-rollout
         url: http://flagger-loadtester.test/
         timeout: 3m
-        retries: 3        
+        retries: 10        
         metadata:
           type: bash
           cmd: "curl -s http://spring-cloud-petclinic-service.test:8080/actuator/health | grep UP"
