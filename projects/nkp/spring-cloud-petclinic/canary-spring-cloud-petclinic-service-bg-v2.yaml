@@ -56,7 +56,7 @@ spec:
       # Pre-rollout: acceptance test before routing any traffic
       - name: acceptance-test
         type: pre-rollout
-        url: http://flagger-loadtester.flagger-system/
+        url: http://flagger-loadtester.test/
         timeout: 30s
         metadata:
           type: bash
@@ -65,7 +65,7 @@ spec:
       # Rollout: generate load during the validation period
       - name: load-test
         type: rollout
-        url: http://flagger-loadtester.flagger-system/
+        url: http://flagger-loadtester.test/
         timeout: 5s
         metadata:
           type: cmd
@@ -75,7 +75,7 @@ spec:
       # Post-rollout: run smoke tests after promotion
       - name: smoke-test
         type: post-rollout
-        url: http://flagger-loadtester.flagger-system/
+        url: http://flagger-loadtester.test/
         timeout: 30s
         metadata:
           type: bash
