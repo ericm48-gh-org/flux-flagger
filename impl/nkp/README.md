@@ -137,7 +137,7 @@ k get events
 k describe canaries.flagger.app spring-cloud-petclinic-service
 ```
 
-17) Spin up an instance of NetShoot:
+17) Spin up an instance [ pod ]of NetShoot:
 ```
 k run netshoot -it --image=nicolaka/netshoot -- bash # Initial Access
 ```
