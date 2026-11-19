@@ -113,7 +113,7 @@ Once deployed, you should see 3 services for petclinic + 1 for flagger-loadteste
 k get svc
 ```
 
-Should show:
+Should show something like:
 ```
 NAME                                     TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)    AGE
 flagger-loadtester                       ClusterIP   10.110.249.152   <none>        80/TCP     21h
