@@ -12,7 +12,7 @@
 4) K8s-CLI [ kubectl ], version >1.35 installed, operational.
 5) KNS-CLI [ Kubernetes Namespace Utility ] installed, operational.
 6) kubectl commands are often aliased by `k`.
-7) K9s version > 1.50.x installed.
+7) K9s version > 1.50.x installed, operational.
 8) Some commands & paths below will vary based off of your implementation.  Below are mine based off of an NKP-v2.18.1 implementation.
 9) When petclinic is deployed it takes approximately 60-65 seconds for the application to start.  The default deployment consists of 2 replicas.
 
