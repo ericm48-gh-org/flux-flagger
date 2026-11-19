@@ -115,6 +115,7 @@ k get svc
 
 Should show:
 ```
+NAME                                     TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)    AGE
 flagger-loadtester                       ClusterIP   10.110.249.152   <none>        80/TCP     21h
 spring-cloud-petclinic-service           ClusterIP   10.105.45.26     <none>        8080/TCP   21h
 spring-cloud-petclinic-service-canary    ClusterIP   10.102.183.171   <none>        8080/TCP   21h
