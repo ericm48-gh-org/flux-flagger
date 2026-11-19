@@ -25,7 +25,7 @@
 export KUBECONFIG='/home/ubuntu/nkp.conf'
 ```
 
-2) Add flagger Helm repo:
+2) Add Flagger Helm repo:
 ```
 helm repo add flagger https://flagger.app
 ```
@@ -108,9 +108,17 @@ Once deployment completes, you should see 1 Deployment with 2 replicas.  You can
 k apply -f canary-spring-cloud-petclinic-service-bg.yaml
 ```
 
-Once deployed, you should see 3 services:
+Once deployed, you should see 3 services for petclinic + 1 for flagger-loadtester:
 ```
 k get svc
+```
+
+Should show:
+```
+flagger-loadtester                       ClusterIP   10.110.249.152   <none>        80/TCP     21h
+spring-cloud-petclinic-service           ClusterIP   10.105.45.26     <none>        8080/TCP   21h
+spring-cloud-petclinic-service-canary    ClusterIP   10.102.183.171   <none>        8080/TCP   21h
+spring-cloud-petclinic-service-primary   ClusterIP   10.107.166.185   <none>        8080/TCP   21h
 ```
 
 14) Monitor the Flagger Logs, you should see it pick up the canary for spring-cloud-petclinic:
