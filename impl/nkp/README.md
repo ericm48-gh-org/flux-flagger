@@ -97,7 +97,7 @@ k apply -f ./hpa-spring-cloud-petclinic-service.yaml
 12) Deploy Initial Version of spring-cloud-petclinic:
 ```
 ./flux-flagger/impl/nkp/spring-cloud-petclinic
-k apply -f deployment-spring-cloud-petclinic-service.yaml
+k apply -f ./deployment-spring-cloud-petclinic-service.yaml
 ```
 
 Once deployment completes, you should see 1 Deployment with 2 replicas.  You can monitor the log files of the pods via K9s.  Again, it takes about 60-65 seconds for the application to startup.
@@ -105,7 +105,7 @@ Once deployment completes, you should see 1 Deployment with 2 replicas.  You can
 13) Deploy the Canary Blue/Green:
 ```
 ./flux-flagger/impl/nkp/spring-cloud-petclinic
-k apply -f canary-spring-cloud-petclinic-service-bg.yaml
+k apply -f ./canary-spring-cloud-petclinic-service-bg.yaml
 ```
 
 Once deployed, you should see 3 services for petclinic + 1 for flagger-loadtester:
