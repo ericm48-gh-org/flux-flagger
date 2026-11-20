@@ -28,7 +28,7 @@ spec:
     # max number of failed checks before rollback
     threshold: 12
     # number of checks to run before rollback
-    iterations: 5 #10
+    iterations: 3 #5 #10
     # Prometheus checks based on 
     # http_request_duration_seconds histogram
     metrics:
@@ -72,6 +72,6 @@ spec:
         timeout: 15s        
 
 
-        
+
         #url: http://flagger-loadtester.test/gate/approve
         #retries: 5
