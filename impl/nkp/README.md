@@ -196,8 +196,9 @@ Below is what the flagger log shows for a successful new image deployment:
 #16 "Promotion completed! Scaling down spring-cloud-petclinic-service.test"
 ```
 A couple things to call-out:
-#1 The HPA kicked-in on iteration #9, (line #11).
-#2 Line #14 is where the new image is copied to the primary deployment.
+
+* The HPA kicked-in on iteration #9, (line #11).
+* Line #14 is where the new image is copied to the primary deployment.
 
 
 
