@@ -173,10 +173,28 @@ spring-cloud-petclinic-service=ghcr.io/ericm48-gh-org/spring-cloud-petclinic-ser
 k -n kommander logs deployment/flagger -f | jq .msg
 ```
 
-This will take a couple of seconds to get started, especially for the very first time.  You should see where the Canary has detected the image-change, and start the deployment-phases [ there are 10 ].  Typically around phase 6-7 you will see the HPA's scale up the deployments due to cpu pressure, and will go to 4 replicas.
+This will take a couple of seconds to get started, especially for the very first time.  You should see where the Canary has detected the image-change, and start the deployment-iterations [ there are 10 ].  Typically around iteration 6-7 you will see the HPA's scale up the deployments due to cpu pressure, and will go to 4 replicas.  In the example below, this took place on iteration 9, line #12.
 
+Below is what the flagger log shows for a successful new image deployment:
 
-
+```
+#1 "Starting canary analysis for spring-cloud-petclinic-service.test"
+#2 "Pre-rollout check smoke-test passed"
+#3 "Advance spring-cloud-petclinic-service.test canary iteration 1/10"
+#4 "Advance spring-cloud-petclinic-service.test canary iteration 2/10"
+#5 "Advance spring-cloud-petclinic-service.test canary iteration 3/10"
+#6 "Advance spring-cloud-petclinic-service.test canary iteration 4/10"
+#7 "Advance spring-cloud-petclinic-service.test canary iteration 5/10"
+#8 "Advance spring-cloud-petclinic-service.test canary iteration 6/10"
+#9 "Advance spring-cloud-petclinic-service.test canary iteration 7/10"
+#10 "Advance spring-cloud-petclinic-service.test canary iteration 8/10"
+#11 "Advance spring-cloud-petclinic-service.test canary iteration 9/10"
+#12 "canary deployment spring-cloud-petclinic-service.test not ready: waiting for rollout to finish: 3 of 4 (readyThreshold 100%) updated replicas are available"
+#13 "Advance spring-cloud-petclinic-service.test canary iteration 10/10"
+#14 "Copying spring-cloud-petclinic-service.test template spec to spring-cloud-petclinic-service-primary.test"
+#15 "HorizontalPodAutoscaler v2 spring-cloud-petclinic-service-primary.test updated"
+#16 "Promotion completed! Scaling down spring-cloud-petclinic-service.test"
+```
 
 
 
