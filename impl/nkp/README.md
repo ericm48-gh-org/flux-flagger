@@ -173,7 +173,7 @@ spring-cloud-petclinic-service=ghcr.io/ericm48-gh-org/spring-cloud-petclinic-ser
 k -n kommander logs deployment/flagger -f | jq .msg
 ```
 
-This will take a couple of seconds to get started, especially for the very first time.  You should see where the Canary has detected the image-change, and start the deployment-iterations [ there are 10 ].  Typically around iteration 6-7 you will see the HPA's scale up the deployments due to cpu pressure, and will go to 4 replicas.  In the example below, this took place on iteration 9, line #12.
+This will take a couple of seconds to get started, especially for the very first time.  You should see where the Canary has detected the image-change, and start the deployment-iterations [ there are 10 ].  
 
 Below is what the flagger log shows for a successful new image deployment:
 
@@ -195,7 +195,9 @@ Below is what the flagger log shows for a successful new image deployment:
 #15 "HorizontalPodAutoscaler v2 spring-cloud-petclinic-service-primary.test updated"
 #16 "Promotion completed! Scaling down spring-cloud-petclinic-service.test"
 ```
-
+A couple things to call-out:
+#1 The HPA kicked-in on iteration #9, (line #11).
+#2 Line #14 is where the new image is copied to the primary deployment.
 
 
 
