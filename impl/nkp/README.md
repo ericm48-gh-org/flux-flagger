@@ -197,7 +197,7 @@ Below is what the flagger log shows for a successful new image deployment:
 ```
 A couple things to call-out:
 
-* The HPA kicked-in on iteration #9, (line #11).
+* The HPA kicked-in on iteration #9, (line #12).
 * Line #14 is where the new image is copied to the primary deployment.
 
 
