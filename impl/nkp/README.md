@@ -202,10 +202,7 @@ A couple things to call-out:
 
 
 ## Clean-Up:
-Below are the steps to delete the main components for the canary.  It is up to you if you want to delete:
-* CRD
-* Policy Changes
-
+Below are the steps to delete the main components for the canary:  
 
 Delete deployment spring-cloud-petclinic:
 ```
@@ -227,3 +224,6 @@ Delete flagger-load-tester:
 helm -n test uninstall flagger-loadtester 
 ```
 
+It is up to you if you want to delete:
+* CRD
+* Policy Changes
