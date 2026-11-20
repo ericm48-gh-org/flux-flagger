@@ -201,23 +201,29 @@ A couple things to call-out:
 * Line #14 is where the new image is copied to the primary deployment.
 
 
+## Clean-Up:
+Below are the steps to delete the main components for the canary.  It is up to you if you want to delete:
+* CRD
+* Policy Changes
 
 
+Delete deployment spring-cloud-petclinic:
+```
+k delete -f deployment-spring-cloud-petclinic-service.yaml
+```
 
+Delete canary spring-cloud-petclinic:
+```
+k delete -f canary-spring-cloud-petclinic-service-bg.yaml
+```
 
+Delete hpa spring-cloud-petclinic:
+```
+k delete -f hpa-spring-cloud-petclinic-service.yaml
+```
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-## Clean-Up
+Delete flagger-load-tester:
+```
+helm -n test uninstall flagger-loadtester 
+```
 
