@@ -65,5 +65,6 @@ spec:
           cmd: "hey -z 1m -q 10 -c 2 http://spring-cloud-petclinic-service-canary.test:8080/"
       - name: "manual-gate-4-prod"
         type: confirm-promotion
-        url: http://flagger-loadtester.test/gate/approve
+        url: http://flagger-loadtester.test/
+        #url: http://flagger-loadtester.test/gate/approve
         #retries: 5
