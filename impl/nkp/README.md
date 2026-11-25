@@ -106,7 +106,17 @@ k apply -f ./deployment-spring-cloud-petclinic-service.yaml
 
 Once deployment completes, you should see 1 Deployment with 2 replicas.  You can monitor the log files of the pods via K9s.  Again, it takes about 60-65 seconds for the application to startup.
 
-13) Deploy the Canary Blue/Green 
+13) Spin up an instance [ pod ] of NetShoot:
+```
+k run netshoot -it --image=nicolaka/netshoot -- bash # Initial Access
+```
+
+14) Once netshoot is ready, exec into it:
+```
+k exec netshoot -it  -- bash                         # Subsequent Access
+```
+
+15) Deploy the Canary Blue/Green 
 
 from ./flux-flagger/impl/nkp/spring-cloud-petclinic:
 ```
@@ -127,29 +137,19 @@ spring-cloud-petclinic-service-canary    ClusterIP   10.102.183.171   <none>    
 spring-cloud-petclinic-service-primary   ClusterIP   10.107.166.185   <none>        8080/TCP   21h
 ```
 
-14) Monitor the Flagger Logs, you should see it pick up the canary for spring-cloud-petclinic:
+16) Monitor the Flagger Logs, you should see it pick up the canary for spring-cloud-petclinic:
 ```
 k -n kommander logs deployment/flagger -f | jq .msg
 ```
 
-15) Monitor K8s Events:
+17) Monitor K8s Events:
 ```
 k get events
 ```
 
-16) Monitor the status of the Canary, wait for it to become ready:
+18) Monitor the status of the Canary, wait for it to become ready:
 ```
 k describe canaries.flagger.app spring-cloud-petclinic-service
-```
-
-17) Spin up an instance [ pod ]of NetShoot:
-```
-k run netshoot -it --image=nicolaka/netshoot -- bash # Initial Access
-```
-
-18) Once netshoot is ready, exec into it:
-```
-k exec netshoot -it  -- bash                         # Subsequent Access
 ```
 
 19) From inside netshoot, run curl to check application instances, versions
