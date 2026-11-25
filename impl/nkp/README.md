@@ -81,24 +81,32 @@ helm -n test uninstall flagger-loadtester
 k apply -f ./crd-traefik-ingressroute.yaml
 ```
 
-10) Apply the Webhook from ./flux-flagger/impl/nkp/policies:
+10) Apply the Webhook 
+
+from ./flux-flagger/impl/nkp/policies:
 ```
 k apply -f ./network-policy-kommander-flux-allow-webhooks.yaml
 ```
 
-11) Setup spring-cloud-petclinic HPA from ./flux-flagger/impl/nkp/spring-cloud-petclinic:
+11) Setup spring-cloud-petclinic HPA 
+
+from ./flux-flagger/impl/nkp/spring-cloud-petclinic:
 ```
 k apply -f ./hpa-spring-cloud-petclinic-service.yaml
 ```
 
-12) Deploy Initial Version of spring-cloud-petclinic from ./flux-flagger/impl/nkp/spring-cloud-petclinic:
+12) Deploy Initial Version of spring-cloud-petclinic 
+
+from ./flux-flagger/impl/nkp/spring-cloud-petclinic:
 ```
 k apply -f ./deployment-spring-cloud-petclinic-service.yaml
 ```
 
 Once deployment completes, you should see 1 Deployment with 2 replicas.  You can monitor the log files of the pods via K9s.  Again, it takes about 60-65 seconds for the application to startup.
 
-13) Deploy the Canary Blue/Green ./flux-flagger/impl/nkp/spring-cloud-petclinic:
+13) Deploy the Canary Blue/Green 
+
+from ./flux-flagger/impl/nkp/spring-cloud-petclinic:
 ```
 k apply -f ./canary-spring-cloud-petclinic-service-bg.yaml
 ```
