@@ -76,7 +76,9 @@ If you need to uninstall Flagger-LoadTester, use:
 helm -n test uninstall flagger-loadtester 
 ```
 
-9) Apply the CRD from ./flux-flagger/crd:
+9) Apply the CRD 
+
+from ./flux-flagger/crd:
 ```
 k apply -f ./crd-traefik-ingressroute.yaml
 ```
