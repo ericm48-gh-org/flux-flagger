@@ -69,9 +69,4 @@ spec:
       - name: post-promotion
         type: post-rollout
         url: http://flagger-loadtester.test/
-        timeout: 15s        
-
-
-
-        #url: http://flagger-loadtester.test/gate/approve
-        #retries: 5
+        timeout: 15s
